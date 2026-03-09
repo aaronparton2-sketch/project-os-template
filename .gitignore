@@ -1,0 +1,35 @@
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+secrets/
+*.key
+*.pem
+*.p12
+*.pfx
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/settings.json
+*.swp
+*.swo
+
+# Node (if scripts use it)
+node_modules/
+npm-debug.log*
+
+# Python (if scripts use it)
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Logs
+*.log
+
+# NOTE: outputs/ is intentionally tracked — do not gitignore it
