@@ -136,17 +136,19 @@ Discovery Call (15-30 min)
     ↓
 Demo Meeting — show free (ugly) version, then premium version
     ↓
-Client says yes → Service agreement signed (PandaDoc/HelloSign, phone-friendly)
+Client says yes → receives Stripe payment link
     ↓
-Stripe payment (upfront fee)
+Client ticks Terms of Service checkbox + pays upfront fee via Stripe
     ↓
 Aaron buys domain on GoDaddy → deploys to Netlify/Vercel → sets up n8n webhook
     ↓
-Website live → client on monthly billing
+Aaron shares GitHub repo with client (full code access)
+    ↓
+Website live → client on monthly Stripe subscription
     ↓
 Upsell sequence: CRM → SEO → Ads → Custom work
     ↓
-Each upsell: new service agreement line item + Stripe subscription updated
+Each upsell: new Stripe payment link + subscription updated
 ```
 
 ---

@@ -36,16 +36,21 @@ Core revenue model documented in detail: `context/money-model.md`
 1. Lead gen via YouTube, cold outreach, referrals
 2. Discovery call (15-30 min)
 3. Demo meeting — show free (ugly) website → then show premium version (built in Lovable). Contrast drives conversion.
-4. Service agreement signed (phone-friendly e-sign)
-5. Stripe payment → Aaron buys domain (GoDaddy) → deploys to Netlify/Vercel → n8n webhook live
-6. Upsell ladder: CRM → SEO → Ads → Custom work (offer until they say no)
+4. Client receives Stripe payment link with embedded Terms of Service checkbox
+5. Client ticks ToS box + pays upfront fee via Stripe
+6. Aaron buys domain (GoDaddy) → deploys to Netlify/Vercel → sets up n8n webhook
+7. Aaron shares GitHub repo with client (full code access — client owns their code)
+8. Website live → client on monthly Stripe subscription for hosting/maintenance
+9. Upsell ladder: CRM → SEO → Ads → Custom work (offer until they say no)
 
 ## Tech Stack
 
 - **Frontend:** Vibe-coded sites (Lovable for prototyping/demos, deployed to Netlify/Vercel)
 - **Backend automations:** n8n (webhooks, email, CRM workflows)
 - **Domains:** GoDaddy (managed on Aaron's account, transferred to client on request)
-- **Payments:** Stripe
+- **Payments:** Stripe (payment links with embedded ToS checkbox — no separate contract signing)
+- **Contracts/Legal:** Terms of Service + Privacy Policy embedded in Stripe checkout. No separate contract template.
+- **Code delivery:** GitHub repos shared with client (full access to their code)
 - **CRM for clients:** Google Sheets + n8n
 - **AI tools:** Claude Code, OpenAI API, Apify
 

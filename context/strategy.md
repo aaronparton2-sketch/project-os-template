@@ -71,7 +71,6 @@ _[Fill in when a project is active — how does the current build connect to the
 
 - Finalise Tier 1 pricing — test $1,800 vs $2,500 in next sales calls
 - PI insurance — research done, need to purchase (see `context/outstanding-actions.md`)
-- Service agreement — need lightweight, phone-signable SLA before next client
 - Hosting platform — evaluate agency-grade options vs current Netlify/Vercel personal accounts
 - When to exit corporate — tied to MRR milestone (what number gives confidence?)
 
