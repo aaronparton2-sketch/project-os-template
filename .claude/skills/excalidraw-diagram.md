@@ -3,6 +3,12 @@ name: excalidraw-diagram
 description: Use when someone asks to draw a diagram, make an Excalidraw diagram, or build an editable diagram. Default for all diagram requests.
 ---
 
+## When to Use
+
+- User asks to "draw a diagram", "make an Excalidraw diagram", or "build an editable visual"
+- Any request for architecture diagrams, flowcharts, comparison visuals, system overviews
+- Default for ALL diagram requests — always use Excalidraw unless user specifies otherwise
+
 ## Workflow
 
 ### Step 1: Understand the request

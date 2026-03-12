@@ -18,6 +18,16 @@
       "headers": {
         "Authorization": "Bearer ${N8N_MCP_ACCESS_TOKEN}"
       }
+    },
+    "gmail": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@gongrzhe/server-gmail-autoauth-mcp"
+      ],
+      "env": {
+        "GMAIL_MCP_CONFIG_DIR": "${GMAIL_MCP_CONFIG_DIR}"
+      }
     }
   }
 }

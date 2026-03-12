@@ -47,10 +47,10 @@ A **Project OS** — a structured, repeatable workspace for running AI business 
 ├── .mcp.json                    # MCP server config (Supabase, n8n) — tracked, uses ${ENV_VAR} refs
 ├── .claude/
 │   ├── commands/                # /prime, /create-plan, /implement, /plan-video
-│   └── skills/
-│       ├── README.md            # Skill index — installed skills + when to use
-│       ├── mcp-integration/
-│       └── skill-creator/
+│   └── skills/                  # Flat folder — one .md per skill (see Skills table below)
+│       ├── excalidraw-diagram.md
+│       ├── mcp-integration.md
+│       └── skill-creator.md
 ├── context/
 │   ├── personal-info.md         # Who Aaron is, his role
 │   ├── business-info.md         # Business overview + sales process + tech stack
@@ -65,8 +65,9 @@ A **Project OS** — a structured, repeatable workspace for running AI business 
 │   └── youtube/                 # Video plans: outputs/youtube/[video-slug]/{brief,script,shot-list}.md
 ├── reference/
 │   ├── integrations-catalog.md  # Available integrations + env var names
+│   ├── mcp/                     # MCP deep-dive docs (server types, auth, tool usage, examples)
 │   └── legal/                   # Service agreements, privacy policy, contract drafts
-└── scripts/                     # Automation scripts
+└── scripts/                     # Automation scripts (incl. init-skill.py, package-skill.py)
 ```
 
 ---
@@ -79,6 +80,20 @@ A **Project OS** — a structured, repeatable workspace for running AI business 
 | `/create-plan [request]` | Plan a change (no implementation). Produces a dated plan in `HOW-plans/`. |
 | `/implement [plan-path]` | Execute a plan step by step. Always updates `WHERE-current-data.md`. |
 | `/plan-video [topic]` | Plan a YouTube video. Walks through brief questions, generates script + shot list in `outputs/youtube/`. After planning, suggest adding to content planner spreadsheet. |
+
+---
+
+## Skills
+
+Skills live as flat `.md` files in `.claude/skills/`. Each has a `## When to Use` section. Before `/create-plan`, ask: *does this task benefit from a skill?*
+
+| Skill | When to Use |
+|-------|-------------|
+| **excalidraw-diagram** | User asks to draw a diagram, make a visual, or create an editable Excalidraw file. Default for all diagram requests. |
+| **mcp-integration** | Adding an MCP server, configuring `.mcp.json`, connecting external tools via Model Context Protocol. |
+| **skill-creator** | Creating a new skill, updating an existing skill, or packaging skills for distribution. |
+
+**Adding a new skill:** Create `.claude/skills/skill-name.md` with frontmatter (`name` + `description`) and a `## When to Use` section. Add a row to this table. Use `skill-creator` skill for guidance.
 
 ---
 

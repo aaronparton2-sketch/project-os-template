@@ -98,10 +98,13 @@ Brief table: command → purpose.
 ### 6. Latest plans + relevant outputs
 List recent plan files and any relevant outputs.
 
-### 7. Top 3 blockers or open questions
+### 7. Outstanding actions
+Pull from `context/outstanding-actions.md` — list any pending items that need Aaron's input.
+
+### 8. Top 3 blockers or open questions
 Pulled from WHERE-current-data.md or inferred from context.
 
-### 8. Recommended next action
+### 9. Recommended next action
 Exact command syntax:
 - `/create-plan <description>` if no plan exists for the next step
 - `/implement HOW-plans/<filename>.md` if a plan is ready

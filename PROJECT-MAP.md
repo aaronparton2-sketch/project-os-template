@@ -19,13 +19,15 @@ This workspace is the operating system for Mycelium AI projects. Every session s
 │   │   ├── create-plan.md       # /create-plan — plan before building
 │   │   ├── implement.md         # /implement — execute a plan
 │   │   └── plan-video.md        # /plan-video — YouTube content planning
-│   └── skills/
-│       ├── README.md            # Skill index — what's installed + when to use
-│       ├── mcp-integration/     # Skill: MCP server setup
-│       └── skill-creator/       # Skill: Create/update skills
+│   └── skills/                  # Flat folder — one .md per skill
+│       ├── excalidraw-diagram.md
+│       ├── mcp-integration.md
+│       └── skill-creator.md
 ├── context/
 │   ├── personal-info.md         # Who you are, your role
-│   ├── business-info.md         # Business overview
+│   ├── business-info.md         # Business overview + sales process + tech stack
+│   ├── money-model.md           # Pricing, service tiers, upsell ladder, unit economics
+│   ├── outstanding-actions.md   # Pending actions requiring Aaron's input
 │   ├── strategy.md              # Current priorities + goals
 │   ├── youtube-style.md         # YouTube voice, tone, structure, visual style guide
 │   ├── WHAT-scope-of-work.md    # WHAT we're building (deliverables, in/out, change log)
@@ -33,8 +35,10 @@ This workspace is the operating system for Mycelium AI projects. Every session s
 ├── HOW-plans/                   # Implementation plans (dated, kebab-case)
 ├── outputs/                     # Deliverables and work products (tracked)
 ├── reference/
-│   └── integrations-catalog.md  # Available integrations + env var names (non-sensitive)
-└── scripts/                     # Automation scripts
+│   ├── integrations-catalog.md  # Available integrations + env var names (non-sensitive)
+│   ├── mcp/                     # MCP deep-dive docs (server types, auth, tool usage)
+│   └── legal/                   # Service agreements, privacy policy, contract drafts
+└── scripts/                     # Automation scripts (incl. skill helpers)
 ```
 
 ---
