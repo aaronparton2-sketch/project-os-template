@@ -10,6 +10,7 @@ Installed skills and when to use them. Reference this during `/create-plan` to i
 |-------|----------------------|-----------------|
 | **mcp-integration** | Adding an MCP server, connecting external tools via Model Context Protocol, configuring `.mcp.json` | SSE, stdio, HTTP, WebSocket server setup; authentication patterns; tool usage examples |
 | **skill-creator** | Designing, structuring, or packaging a new skill; updating an existing skill's scripts or references | Skill scaffolding, init/package/validate scripts |
+| **excalidraw-diagram** | User asks to draw a diagram, make an Excalidraw diagram, or build an editable visual | Generates `.excalidraw` JSON files; color-coded zones; arrows with labels; fully editable in excalidraw.com |
 
 ---
 
