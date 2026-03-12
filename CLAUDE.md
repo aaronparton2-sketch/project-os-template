@@ -53,7 +53,9 @@ A **Project OS** — a structured, repeatable workspace for running AI business 
 │       └── skill-creator/
 ├── context/
 │   ├── personal-info.md         # Who Aaron is, his role
-│   ├── business-info.md         # Business overview
+│   ├── business-info.md         # Business overview + sales process + tech stack
+│   ├── money-model.md           # Pricing, service tiers, upsell ladder, unit economics
+│   ├── outstanding-actions.md   # Pending actions requiring Aaron's input
 │   ├── strategy.md              # Current priorities
 │   ├── youtube-style.md         # YouTube voice, tone, structure, visual style guide
 │   ├── WHAT-scope-of-work.md    # WHAT we're building — deliverables, in/out, acceptance, change log
@@ -62,7 +64,8 @@ A **Project OS** — a structured, repeatable workspace for running AI business 
 ├── outputs/                     # Deliverables (tracked — do not gitignore)
 │   └── youtube/                 # Video plans: outputs/youtube/[video-slug]/{brief,script,shot-list}.md
 ├── reference/
-│   └── integrations-catalog.md  # Available integrations + env var names
+│   ├── integrations-catalog.md  # Available integrations + env var names
+│   └── legal/                   # Service agreements, privacy policy, contract drafts
 └── scripts/                     # Automation scripts
 ```
 

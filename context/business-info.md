@@ -19,10 +19,35 @@
 
 ## Products / Services / Focus Areas
 
-- AI Education
-- AI Audits
-- n8n Automation Workflows
-- Custom Software (web apps, integrations, tools)
+Core revenue model documented in detail: `context/money-model.md`
+
+| Service | Type | Revenue Model |
+|---------|------|---------------|
+| Landing pages + email automation | Entry product | Upfront + monthly hosting |
+| Google Sheet CRM + n8n workflows | Upsell | Setup fee + monthly |
+| SEO improvements | Upsell | Audit fee + monthly management |
+| Paid ad management | Upsell | Setup fee + monthly (or % of spend) |
+| Custom web apps & large automations | Big ticket | Scoped project + monthly support |
+| AI Education | Future/supplementary | TBD |
+| AI Audits | Future/supplementary | TBD |
+
+## Sales Process
+
+1. Lead gen via YouTube, cold outreach, referrals
+2. Discovery call (15-30 min)
+3. Demo meeting — show free (ugly) website → then show premium version (built in Lovable). Contrast drives conversion.
+4. Service agreement signed (phone-friendly e-sign)
+5. Stripe payment → Aaron buys domain (GoDaddy) → deploys to Netlify/Vercel → n8n webhook live
+6. Upsell ladder: CRM → SEO → Ads → Custom work (offer until they say no)
+
+## Tech Stack
+
+- **Frontend:** Vibe-coded sites (Lovable for prototyping/demos, deployed to Netlify/Vercel)
+- **Backend automations:** n8n (webhooks, email, CRM workflows)
+- **Domains:** GoDaddy (managed on Aaron's account, transferred to client on request)
+- **Payments:** Stripe
+- **CRM for clients:** Google Sheets + n8n
+- **AI tools:** Claude Code, OpenAI API, Apify
 
 ## Current Active Project
 
@@ -31,10 +56,12 @@ _No active project. Use `/create-plan` to start one._
 ## Key Context
 
 - Still early stages — 1-man band (Aaron)
+- Currently working full-time in corporate (Perth, WA) — planning to exit and go all-in on Mycelium AI
 - Market position: early/unknown; no significant inbound yet
 - Leads come via cold outreach and referrals
-- YouTube channel launched — building personal brand and content flywheel
-- Aaron quit 9-5 in April 2026 to go all-in on Mycelium AI
+- YouTube channel launched — posting ~fortnightly, goal is weekly then 2-3x/week post-corporate exit
+- Target clients: small to medium businesses that aren't digitally technical
+- Location: Perth, Western Australia
 
 ---
 
