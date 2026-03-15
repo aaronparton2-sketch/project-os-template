@@ -175,6 +175,22 @@ All MCP servers are configured in `.mcp.json` and **must** use `${ENV_VAR}` refe
 
 ---
 
+### Stripe (REST API — Read-Only)
+
+| Field | Detail |
+|-------|--------|
+| **Purpose** | Payment data — MRR tracking, customer payment status, invoice history, failed payment alerts |
+| **How used** | REST API calls via Python (`stripe` SDK); read-only restricted key for safety |
+| **Required env vars** | `STRIPE_SECRET_KEY` (restricted, read-only) |
+| **MCP server** | No |
+| **Free tier** | No API call limits — included with Stripe account |
+| **Permissions (restricted key)** | Charges: Read, Customers: Read, Invoices: Read, Subscriptions: Read, Payment Intents: Read. **No write permissions.** |
+| **Status** | Configured and working (read-only restricted key `rk_live_` in `.env`) |
+| **Setup notes** | 1. Go to Stripe Dashboard → Developers → API Keys → Create restricted key. 2. Name it "Claude Code Read-Only". 3. Grant ONLY read permissions (see Permissions above). 4. Copy the key (starts with `rk_live_`). 5. Add to `.env` as `STRIPE_SECRET_KEY`. 6. Install Python SDK: `pip install stripe`. |
+| **CRITICAL** | Never use the full secret key (`sk_live_`). Always use a restricted key with minimal permissions. Read-only means Claude can query but never modify payments, refunds, or subscriptions. |
+
+---
+
 ### Gmail (MCP Server)
 
 | Field | Detail |

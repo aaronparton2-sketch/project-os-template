@@ -48,11 +48,29 @@ Core revenue model documented in detail: `context/money-model.md`
 - **Frontend:** Vibe-coded sites (Lovable for prototyping/demos, deployed to Netlify/Vercel)
 - **Backend automations:** n8n (webhooks, email, CRM workflows)
 - **Domains:** GoDaddy (managed on Aaron's account, transferred to client on request)
-- **Payments:** Stripe (payment links with embedded ToS checkbox — no separate contract signing)
+- **Payments:** Stripe (payment links with embedded ToS checkbox — no separate contract signing). Stripe API integrated (read-only restricted key) for MRR tracking, payment status checks, and failed payment alerts. See `reference/integrations-catalog.md` for setup.
 - **Contracts/Legal:** Terms of Service + Privacy Policy embedded in Stripe checkout. No separate contract template.
 - **Code delivery:** GitHub repos shared with client (full access to their code)
 - **CRM for clients:** Google Sheets + n8n
 - **AI tools:** Claude Code, OpenAI API, Apify
+
+## Stripe Data (Live — Read-Only API)
+
+| Metric | Value | As of |
+|--------|-------|-------|
+| **Total customers** | 6 | 2026-03-15 |
+| **Active subscriptions** | 5 | 2026-03-15 |
+| **MRR** | $170.00 AUD | 2026-03-15 |
+| **Failed payments (30 days)** | 1 (Form Society — $50, card blocked by Stripe fraud filter) | 2026-03-15 |
+
+**Active subscribers:**
+- Arturo Toalisa Acuna — $30/mo
+- Andrew Bozier — $30/mo
+- Grundy Drilling Company — $30/mo
+- Euro System Carpet Cleaning — $30/mo
+- Form Society — $50/mo (last payment failed — see outstanding actions)
+
+*Update this section by asking Claude to re-run the Stripe check.*
 
 ## Current Active Project
 

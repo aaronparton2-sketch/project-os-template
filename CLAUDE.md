@@ -35,6 +35,17 @@ A **Project OS** — a structured, repeatable workspace for running AI business 
 
 ---
 
+## Auto-Commit on Sign-Off
+
+When Aaron signals he's finishing a session — e.g. "logging off", "done for now", "finishing up", "calling it a day", "that's it for today", "signing off", "wrapping up" — Claude must:
+
+1. Run `git status` to check for changes
+2. If there are changes: stage all tracked + new files (`git add -A`), commit with a summary of what was done this session, and push to `origin main`
+3. If no changes: confirm "Nothing to commit — repo is up to date" and skip
+4. Remind Aaron to copy `.env` if he's moving to a new machine (it's gitignored)
+
+---
+
 ## Workspace Structure
 
 ```
@@ -92,6 +103,7 @@ Skills live as flat `.md` files in `.claude/skills/`. Each has a `## When to Use
 | **excalidraw-diagram** | User asks to draw a diagram, make a visual, or create an editable Excalidraw file. Default for all diagram requests. |
 | **mcp-integration** | Adding an MCP server, configuring `.mcp.json`, connecting external tools via Model Context Protocol. |
 | **skill-creator** | Creating a new skill, updating an existing skill, or packaging skills for distribution. |
+| **linkedin-content** | Writing LinkedIn posts, planning LinkedIn content strategy, or building a personal brand on LinkedIn. Based on Lara Acosta's proven frameworks (SLAY, PAS, Broad→Narrow→Niche). |
 
 **Adding a new skill:** Create `.claude/skills/skill-name.md` with frontmatter (`name` + `description`) and a `## When to Use` section. Add a row to this table. Use `skill-creator` skill for guidance.
 
