@@ -42,37 +42,62 @@
 
 ---
 
+## The Path (Refined March 2026)
+
+```
+Phase 1: Agency (NOW)
+  → Build client base via free website decoy + upsell ladder
+  → Automate lead gen (Apify + ABR + n8n pipeline)
+  → Stack MRR until corporate exit is safe
+  → Keep posting on YouTube (~fortnightly)
+  → Interesting work on Upwork for income + portfolio
+
+Phase 2: Agency at Scale (POST-EXIT)
+  → Go all-in on lead gen + content (daily posting)
+  → Scale to 4-5 websites/month + deep upsell stack
+  → Hire sales contractor when pipeline exceeds delivery capacity
+  → Build case studies and social proof
+
+Phase 3: Productised SaaS (MATURE — 12+ months)
+  → Identify most repeatable service (CRM? Review automation? Lead reactivation?)
+  → Productise it using Ben's 5-step SaaS blueprint
+  → Build output first, validate with existing clients, then build MVP
+  → Agency funds SaaS development (no outside capital needed)
+
+Phase 4: Scale Both
+  → Agency generates cash flow + client pipeline
+  → SaaS generates scalable recurring revenue
+  → Content drives leads to both
+```
+
 ## Scaling Roadmap
 
 | Phase | Revenue | Headcount | Focus |
 |-------|---------|-----------|-------|
-| **Now** | <$5k/mo | Solo (Aaron) | Land clients, build MRR, content, professionalise |
-| **Post-exit** | $5-10k/mo | Solo | Go all-in, daily content, 4-5 websites/month |
-| **Growth** | $10-20k/mo | +1 sales contractor | Aaron focuses on delivery + content, sales person feeds pipeline |
-| **Scale** | $20k+/mo | +AI dev contractors | Delegate builds, Aaron focuses on sales + strategy + content |
-
----
-
-## Why This Project Matters Strategically
-
-_[Fill in when a project is active — how does the current build connect to the bigger picture?]_
+| **Now** | <$5k/mo | Solo (Aaron) | Automated lead gen, free website decoy, upsell stack, Upwork for income |
+| **Post-exit** | $5-10k/mo | Solo | Daily content, 4-5 websites/month, deep upsell ladder |
+| **Growth** | $10-20k/mo | +1 sales contractor | Aaron on delivery + content, sales person feeds pipeline |
+| **Productise** | $15-20k/mo | +AI dev contractors | Identify top service → build SaaS MVP (Ben's blueprint) |
+| **Scale** | $20k+/mo | Small team | Agency + SaaS running in parallel. Content drives both. |
 
 ---
 
 ## What Success Looks Like
 
-- **Short-term (3 months):** 3-4 active monthly clients, $3,000+ MRR, posting weekly on YouTube, PI insurance in place, service agreement in use
-- **Medium-term (6 months):** Corporate exit, $8-10k/mo revenue, 10+ monthly clients, daily content
-- **Long-term (12 months):** $15-20k/mo, first contractor hired, working from Bali occasionally
+- **Short-term (3 months):** Automated lead pipeline running daily, 5+ active monthly clients, $3,000+ MRR, PI insurance in place, free website offer tested
+- **Medium-term (6 months):** Corporate exit, $8-10k/mo revenue, 15+ monthly clients, daily content, 2+ upsells per client average
+- **Long-term (12 months):** $15-20k/mo, first contractor hired, SaaS MVP validated, working from Bali occasionally
 
 ---
 
 ## Key Decisions or Open Questions
 
-- Finalise Tier 1 pricing — test $1,800 vs $2,500 in next sales calls
+- Test $1,500 upfront for Tier 1 with free website decoy strategy
 - PI insurance — research done, need to purchase (see `context/outstanding-actions.md`)
 - Hosting platform — evaluate agency-grade options vs current Netlify/Vercel personal accounts
 - When to exit corporate — tied to MRR milestone (what number gives confidence?)
+- Which service to productise into SaaS first? (CRM, review automation, or lead reactivation)
+- Lead gen priority: build automated pipeline first, or start with Webleadr for instant leads?
 
 ---
 

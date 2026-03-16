@@ -33,6 +33,8 @@ A **Project OS** — a structured, repeatable workspace for running AI business 
 - Required by a command (`/create-plan`, `/implement`), OR
 - Explicitly requested by the user
 
+**Email drafting:** Before drafting any email, Claude must read `reference/emails/` for relevant templates. Don't copy templates word-for-word — use them as tone/structure inspiration and adapt to the specific situation. If no template fits, draft from scratch in the same voice (casual, clear, "cheers" not "regards").
+
 ---
 
 ## Auto-Commit on Sign-Off
@@ -69,6 +71,7 @@ When Aaron signals he's finishing a session — e.g. "logging off", "done for no
 │   ├── outstanding-actions.md   # Pending actions requiring Aaron's input
 │   ├── strategy.md              # Current priorities
 │   ├── youtube-style.md         # YouTube voice, tone, structure, visual style guide
+│   ├── lead-gen-strategy.md     # Lead generation strategy (Hormozi framework, automated pipeline, outreach)
 │   ├── WHAT-scope-of-work.md    # WHAT we're building — deliverables, in/out, acceptance, change log
 │   └── WHERE-current-data.md   # LIVING STATE — current project status (update frequently)
 ├── HOW-plans/                   # Dated implementation plans
@@ -76,6 +79,8 @@ When Aaron signals he's finishing a session — e.g. "logging off", "done for no
 │   └── youtube/                 # Video plans: outputs/youtube/[video-slug]/{brief,script,shot-list}.md
 ├── reference/
 │   ├── integrations-catalog.md  # Available integrations + env var names
+│   ├── emails/                  # Reusable email templates (onboarding, cold outreach, follow-up, upsell, etc.)
+│   ├── uploads/                 # Uploaded files (screenshots, docs, Excalidraw files) + markdown summaries
 │   ├── mcp/                     # MCP deep-dive docs (server types, auth, tool usage, examples)
 │   └── legal/                   # Service agreements, privacy policy, contract drafts
 └── scripts/                     # Automation scripts (incl. init-skill.py, package-skill.py)
@@ -104,6 +109,9 @@ Skills live as flat `.md` files in `.claude/skills/`. Each has a `## When to Use
 | **mcp-integration** | Adding an MCP server, configuring `.mcp.json`, connecting external tools via Model Context Protocol. |
 | **skill-creator** | Creating a new skill, updating an existing skill, or packaging skills for distribution. |
 | **linkedin-content** | Writing LinkedIn posts, planning LinkedIn content strategy, or building a personal brand on LinkedIn. Based on Lara Acosta's proven frameworks (SLAY, PAS, Broad→Narrow→Niche). |
+| **paid-ads** | Client needs paid advertising (Google or Meta). Entry point — runs discovery questions, classifies business archetype, recommends budget split, then hands off to `google-ads` and/or `meta-ads`. |
+| **google-ads** | Setting up a Google Ads campaign. Full workflow: account, verification, conversion tracking, keywords, RSA copy, extensions, budget, post-launch management. Run `paid-ads` first. |
+| **meta-ads** | Setting up a Meta (Facebook/Instagram) Ads campaign. Full workflow: Business Portfolio, pixel, targeting, creative, lead forms, CRM automation, optimisation. Run `paid-ads` first. |
 
 **Adding a new skill:** Create `.claude/skills/skill-name.md` with frontmatter (`name` + `description`) and a `## When to Use` section. Add a row to this table. Use `skill-creator` skill for guidance.
 

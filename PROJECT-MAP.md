@@ -21,7 +21,11 @@ This workspace is the operating system for Mycelium AI projects. Every session s
 │   │   └── plan-video.md        # /plan-video — YouTube content planning
 │   └── skills/                  # Flat folder — one .md per skill
 │       ├── excalidraw-diagram.md
+│       ├── google-ads.md
+│       ├── linkedin-content.md
 │       ├── mcp-integration.md
+│       ├── meta-ads.md
+│       ├── paid-ads.md
 │       └── skill-creator.md
 ├── context/
 │   ├── personal-info.md         # Who you are, your role
@@ -36,6 +40,8 @@ This workspace is the operating system for Mycelium AI projects. Every session s
 ├── outputs/                     # Deliverables and work products (tracked)
 ├── reference/
 │   ├── integrations-catalog.md  # Available integrations + env var names (non-sensitive)
+│   ├── emails/                  # Reusable email templates (onboarding, outreach, follow-up, upsell, etc.)
+│   ├── uploads/                 # Uploaded files (screenshots, docs, diagrams) + markdown summaries
 │   ├── mcp/                     # MCP deep-dive docs (server types, auth, tool usage)
 │   └── legal/                   # Service agreements, privacy policy, contract drafts
 └── scripts/                     # Automation scripts (incl. skill helpers)
