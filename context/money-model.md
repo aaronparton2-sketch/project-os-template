@@ -106,7 +106,7 @@ Each tier below expands on the master table with full pricing rationale, AU mark
 | Item | Price | AU Market | Notes |
 |------|-------|-----------|-------|
 | Setup fee | **$1,500** | $1,200–$5,000 (low-mid) | Vibe-coded landing page + n8n webhook + contact form email. 3-4 hours work. |
-| Monthly hosting + maintenance | **$79/mo** | $75–$300/mo (low-mid) | Hosting on Netlify/Vercel + 2 text/image changes per month included. |
+| Monthly hosting + maintenance | **$79/mo** | $75–$300/mo (low-mid) | Hosting on Netlify/Vercel. Includes: bug fixes, monitoring & maintenance, 1-2 photo/minor changes per month. Ad-hoc rework beyond included changes: **$150/hr**. |
 | Domain management | Included | — | Baked into monthly. Domain on Aaron's GoDaddy, transfers on request. |
 
 **Pitch:** "This is your actual business website — professional, fast, mobile-friendly, with a contact form that emails you instantly when someone enquires."
@@ -322,6 +322,7 @@ Every client who stays generates recurring revenue. This compounds:
 6. **Down-sell when they say no.** Always have a zero-risk fallback — never leave a call empty-handed.
 7. **Proof of concept removes objections.** Build it, show it, offer full refund. Risk reversal is the ultimate close.
 8. **Review pricing quarterly.** As demand grows and you're closing >80% of leads, prices are too low.
+9. **Ad-hoc rework rate: $150/hr AUD.** For work beyond what's included in monthly plans. Communicate upfront so clients know the boundary.
 
 ---
 
@@ -359,8 +360,8 @@ Close accelerators: First month free / Proof of concept / Bundle discount / Test
 ## Outstanding Pricing Decisions
 
 - [ ] Test $1,500 upfront for Tier 1 in next sales calls (reduced from $1,800-$2,500 to increase close rate with decoy strategy)
-- [ ] Set hourly rate for ad-hoc rework (recommended: $150–$200/hr AUD)
-- [ ] Define "what's included" boundary for monthly hosting (current: 2 text/image changes per month included)
+- [x] ~~Set hourly rate for ad-hoc rework~~ — **$150/hr AUD** (decided 2026-03-20)
+- [x] ~~Define "what's included" in monthly hosting~~ — **Bug fixes, monitoring & maintenance, 1-2 photo/minor changes per month** (decided 2026-03-20)
 - [ ] Price AI Chatbot tier — need to assess per-client AI API costs
 - [ ] Price AI Voice Agent tier — need to assess VAPI/call costs per client
 - [ ] Decide on free website hosting monthly: $29 vs $49 for Tier 0

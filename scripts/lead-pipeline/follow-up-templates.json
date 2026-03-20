@@ -1,0 +1,37 @@
+{
+  "follow_up_1_day_3": {
+    "pipeline_a": {
+      "subject": "Re: {{original_subject}}",
+      "body": "Hey {{first_name}},\n\nSent you a note a few days ago about {{business_name}}'s website — figured I'd follow up in case it got buried.\n\nHappy to show you what I had in mind. No pressure either way.\n\nCheers,\nAaron"
+    },
+    "pipeline_b": {
+      "subject": "Re: {{original_subject}}",
+      "body": "Hey {{first_name}},\n\nFollowed up on that speed test I mentioned — your site's still scoring {{pagespeed_score}}/100. Just wanted to make sure you saw my email.\n\nHappy to walk you through what I'd change. 10 mins max.\n\nCheers,\nAaron"
+    }
+  },
+  "follow_up_2_day_7": {
+    "pipeline_a": {
+      "subject": "Re: {{original_subject}}",
+      "body": "Hey {{first_name}},\n\nLast follow-up from me — I actually mocked up a rough idea of what a site for {{business_name}} could look like. Based on your {{suburb}} area and the kind of work you do.\n\nIf you're curious I'll send it through. If not, no worries at all.\n\nCheers,\nAaron"
+    },
+    "pipeline_b": {
+      "subject": "Re: {{original_subject}}",
+      "body": "Hey {{first_name}},\n\nQuick update — I ran a full audit on your site since I last emailed. Found a few things that are probably costing you enquiries:\n\n{{specific_issues_list}}\n\nHappy to walk you through it if you're interested. 10 minutes max.\n\nCheers,\nAaron"
+    }
+  },
+  "follow_up_3_day_14": {
+    "shared": {
+      "subject": "Re: {{original_subject}}",
+      "body": "Hey {{first_name}},\n\nLast one from me — don't want to be a pest. If a website isn't on your radar right now, totally get it.\n\nIf it ever is, my number's below. Happy to help whenever the timing's right.\n\nCheers,\nAaron\n0498 201 788"
+    }
+  },
+  "rules": {
+    "all_follow_ups_use_reply_threading": true,
+    "subject_always_starts_with_re": true,
+    "stop_immediately_on_any_reply": true,
+    "max_follow_ups": 3,
+    "follow_up_schedule_days": [3, 7, 14],
+    "after_day_14_mark_no_response": true,
+    "footer": "\n---\nIf this isn't relevant, just reply \"stop\" and I won't contact you again.\nAaron Parton | Mycelium AI | Perth, WA"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "pipeline_a_no_website": [
+    {
+      "variant": "review_quote",
+      "subject_template": "Your reviews are doing the selling — {{business_name}}",
+      "body_template": "{{top_review_quote_or_suburb_hook}}\n\nFound {{business_name}} on Google — {{google_reviews}} reviews averaging {{google_rating}} stars. Clearly you're doing solid work in {{suburb}}.\n\nNoticed you don't have a website though. Your competitors in the area do, and they're picking up the enquiries you're missing.\n\nI build websites for trades businesses — happy to put something together for you for free, just to show you what it'd look like. No strings.\n\nWorth a look?\n\nCheers,\nAaron\nMycelium AI\n0498 201 788\n\n---\nIf this isn't relevant, just reply \"stop\" and I won't contact you again.\nAaron Parton | Mycelium AI | Perth, WA"
+    },
+    {
+      "variant": "competitor",
+      "subject_template": "{{competitors_with_website}} of your competitors have websites",
+      "body_template": "{{business_name}} — found you on Google Maps in {{suburb}}. {{google_reviews}} reviews, clearly doing well.\n\nDid a quick check and {{competitors_with_website}} other {{category}} businesses in your area already have websites. Not saying that to stress you out — just figured you'd want to know.\n\nI build sites for trades businesses. Happy to put a free one together for you so you can see what it'd look like. Genuinely no catch.\n\nInterested?\n\nCheers,\nAaron\n0498 201 788\n\n---\nIf this isn't relevant, just reply \"stop\" and I won't contact you again.\nAaron Parton | Mycelium AI | Perth, WA"
+    },
+    {
+      "variant": "direct",
+      "subject_template": "Free website for {{business_name}}",
+      "body_template": "{{business_name}} in {{suburb}} — noticed you don't have a website.\n\nI'll build you one for free. No strings, no monthly fee unless you want hosting.\n\nFigured I'd reach out — might be a stretch but thought it was worth asking.\n\nCheers,\nAaron\n0498 201 788\n\n---\nIf this isn't relevant, just reply \"stop\" and I won't contact you again.\nAaron Parton | Mycelium AI | Perth, WA"
+    },
+    {
+      "variant": "free_offer",
+      "subject_template": "Built you something — {{business_name}}",
+      "body_template": "I'll build {{business_name}} a free website. Not a sales pitch — I actually do this.\n\nFound you on {{source_friendly}} in {{suburb}}. {{google_reviews}} reviews, so clearly you're doing good work. Just don't have a website to show for it yet.\n\nI build sites for trades businesses around Perth. Happy to put something together and send it through. If you don't like it, no worries at all.\n\nWant me to have a crack?\n\nCheers,\nAaron\n0498 201 788\n\n---\nIf this isn't relevant, just reply \"stop\" and I won't contact you again.\nAaron Parton | Mycelium AI | Perth, WA"
+    }
+  ],
+  "pipeline_b_diy_website": [
+    {
+      "variant": "speed_score",
+      "subject_template": "Your website's costing you customers",
+      "body_template": "Found {{business_name}} on Google — {{google_reviews}} reviews averaging {{google_rating}} stars, clearly you're doing solid work in {{suburb}}.\n\nRan a quick speed test on your site though — it scored {{pagespeed_score}}/100. For context, anything under 50 means about 40% of visitors leave before the page even loads. {{specific_issue}}\n\nI rebuild sites like yours all the time — typically triple the speed and get them ranking properly in Google. Happy to show you what yours could look like, no obligation.\n\nWorth a look?\n\nCheers,\nAaron\nMycelium AI\n0498 201 788\n\n---\nIf this isn't relevant, just reply \"stop\" and I won't contact you again.\nAaron Parton | Mycelium AI | Perth, WA"
+    },
+    {
+      "variant": "mobile_issue",
+      "subject_template": "Your site on mobile — {{business_name}}",
+      "body_template": "{{business_name}} — checked your website on my phone and it's not great. {{mobile_specific_issue}}\n\nMost people searching for {{category}} in {{suburb}} are on their phones. If your site doesn't work properly on mobile, you're losing them to competitors whose sites do.\n\nNot trying to be harsh — just figured you'd want to know. I fix this stuff for trades businesses. Happy to show you what a mobile-friendly version would look like.\n\nInterested?\n\nCheers,\nAaron\n0498 201 788\n\n---\nIf this isn't relevant, just reply \"stop\" and I won't contact you again.\nAaron Parton | Mycelium AI | Perth, WA"
+    },
+    {
+      "variant": "competitor_compare",
+      "subject_template": "Quick heads up about your website",
+      "body_template": "{{business_name}} in {{suburb}} — your {{diy_platform}} site scored {{pagespeed_score}}/100 on Google's speed test.\n\nI checked a few other {{category}} businesses in your area and most of them are scoring 80+. That gap matters — Google ranks faster sites higher, and visitors bounce from slow ones.\n\nI rebuild {{diy_platform}} sites into proper fast ones all the time. Not sure if it's on your radar but figured I'd mention it.\n\nCheers,\nAaron\n0498 201 788\n\n---\nIf this isn't relevant, just reply \"stop\" and I won't contact you again.\nAaron Parton | Mycelium AI | Perth, WA"
+    },
+    {
+      "variant": "money_loss",
+      "subject_template": "You're losing customers to a slow website",
+      "body_template": "{{business_name}} — your site scored {{pagespeed_score}}/100 on Google's speed test. That means roughly 40% of people who click through to your site leave before it loads.\n\n{{if_running_ads}}You're running Google Ads too, so some of that ad spend is going to waste on visitors who never see your page.{{/if_running_ads}}\n\nI rebuild {{diy_platform}} sites for trades businesses. Usually triple the speed and fix the SEO so Google actually shows you to people searching in {{suburb}}.\n\nWant me to show you what it'd look like?\n\nCheers,\nAaron\n0498 201 788\n\n---\nIf this isn't relevant, just reply \"stop\" and I won't contact you again.\nAaron Parton | Mycelium AI | Perth, WA"
+    }
+  ]
+}

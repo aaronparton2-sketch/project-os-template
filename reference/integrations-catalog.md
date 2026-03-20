@@ -207,6 +207,65 @@ All MCP servers are configured in `.mcp.json` and **must** use `${ENV_VAR}` refe
 
 ---
 
+### ABR — Australian Business Register (Free API)
+
+| Field | Detail |
+|-------|--------|
+| **Purpose** | Query new WA business registrations — reach out to businesses within days of ABN registration |
+| **How used** | SOAP API called by Python script (`scripts/lead-pipeline/abr-query.py`), triggered by n8n |
+| **Required env vars** | `ABR_GUID` |
+| **MCP server** | No |
+| **Free tier** | Unlimited — free government API |
+| **Status** | Configured and working (GUID in `.env` since 2026-03-19) |
+| **Setup notes** | Register at abr.business.gov.au/Tools/WebServices to get a GUID. No rate limits for reasonable usage. |
+
+---
+
+### Instantly (Cold Email)
+
+| Field | Detail |
+|-------|--------|
+| **Purpose** | Cold email warmup, sending, sender rotation, reply detection, deliverability monitoring |
+| **How used** | REST API — n8n pushes personalised emails to Instantly campaigns, Instantly handles sending/warmup/rotation |
+| **Required env vars** | `INSTANTLY_API_KEY` |
+| **MCP server** | No |
+| **Cost** | ~$47 USD/mo ($72 AUD/mo) — Growth plan |
+| **API endpoints used** | `POST /api/v1/campaign/create`, `POST /api/v1/campaign/add-leads-to-campaign`, `GET /api/v1/analytics/campaign` |
+| **Status** | Configured and working. 3 accounts warming (myceliumai, myceliumweb, myceliumsites). API key in `.env`. |
+| **Setup notes** | API key from instantly.ai > Settings > API. Warmup takes 4 weeks before cold sends can begin. |
+
+---
+
+### Zoho Mail (Outreach Domains)
+
+| Field | Detail |
+|-------|--------|
+| **Purpose** | Email hosting for outreach domains — cheap mailboxes for cold email sending |
+| **How used** | IMAP/SMTP — n8n monitors replies via IMAP, Instantly sends via SMTP. Not accessed via API. |
+| **Required env vars** | `ZOHO_IMAP_HOST`, `ZOHO_SMTP_HOST`, `OUTREACH_DOMAIN_1`, `OUTREACH_DOMAIN_2` |
+| **MCP server** | No |
+| **Cost** | A$48/year (2 users on Mail Lite) |
+| **Accounts** | `aaron@myceliumweb.com.au`, `aaron@myceliumsites.com.au` |
+| **SMTP/IMAP servers** | `smtppro.zoho.com.au` (SMTP 465 SSL), `imappro.zoho.com.au` (IMAP 993 SSL) |
+| **Status** | Configured and working. DNS (MX, SPF, DKIM, DMARC) set for both domains. Connected to Instantly. |
+| **Setup notes** | Use app-specific passwords (not account password) for SMTP/IMAP. Requires 2FA enabled per account. IMAP/SMTP must be manually enabled per account in Zoho settings. |
+
+---
+
+### Google PageSpeed Insights API (Free)
+
+| Field | Detail |
+|-------|--------|
+| **Purpose** | Website speed auditing — scores DIY websites for Pipeline B lead scoring |
+| **How used** | HTTP request from n8n to PageSpeed API. Returns speed score, mobile score, Core Web Vitals, SEO issues. |
+| **Required env vars** | None — free without API key (rate-limited but generous: 25,000 queries/day) |
+| **MCP server** | No |
+| **Cost** | Free |
+| **API endpoint** | `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url={URL}&strategy=mobile` |
+| **Status** | Ready to use — no setup needed |
+
+---
+
 ## Adding a New Integration
 
 1. Add placeholder var name(s) to `.env.example` (in the correct section: API or MCP)
