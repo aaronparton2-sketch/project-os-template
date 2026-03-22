@@ -956,6 +956,13 @@ function scoreNoWebsiteLead(lead) {
     breakdown.multi_source = '+1 (found on multiple platforms)';
   }
 
+  // Signal 8: Residential address (credit: Aaron's girlfriend)
+  // Home-based businesses are owner-operated, no marketing support = ideal lead
+  if (lead.address_type === 'residential') {
+    score += 2;
+    breakdown.residential = '+2 (residential address — likely owner-operated)';
+  }
+
   return { ...lead, score: Math.min(score, 10), score_breakdown: breakdown };
 }
 ```
@@ -1041,6 +1048,13 @@ function scoreDiyWebsiteLead(lead) {
     breakdown.expired = '+2 (domain expired — had website before, needs new one)';
   }
 
+  // Signal 9: Residential address (credit: Aaron's girlfriend)
+  // Home-based businesses are owner-operated, no marketing support = ideal lead
+  if (lead.address_type === 'residential') {
+    score += 2;
+    breakdown.residential = '+2 (residential address — likely owner-operated)';
+  }
+
   return { ...lead, score: Math.min(score, 10), score_breakdown: breakdown };
 }
 ```
@@ -1075,7 +1089,7 @@ function scoreDiyWebsiteLead(lead) {
 - Filter: `website` is empty OR contains `facebook.com`
 - Flag `website_is_facebook = true` if website contains `facebook.com`
 - Normalise phone to Australian format (`0X XXXX XXXX`)
-- **Smart detection:** If a business has NO website on Google Maps, also check if they have a website elsewhere (quick Google search for "[business name] [suburb]"). Some businesses have websites but didn't add them to Google Maps — these are false positives we want to exclude OR reclassify to Pipeline B.
+- **Website Existence Checker (3-layer verification):** Runs after normalisation, before scoring. See `HOW-plans/2026-03-21-website-existence-checker.md` and `scripts/lead-pipeline/website-checker.js`. Layer 1: URL pattern check (free). Layer 2: Google search via Apify (batched, ~$0.001/search). Layer 3: ABN→domain check (free). If website found → reclassify to Pipeline B. If professional site → suppress. Eliminates ~20-30% false positive rate from Google Maps "no website" data.
 
 **Cadence:** Daily Mon-Fri, rotating 3-4 categories per day to control costs.
 **Cost estimate:** ~$15-25/mo (Apify).

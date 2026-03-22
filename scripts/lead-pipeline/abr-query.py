@@ -33,6 +33,27 @@ ABR_ENDPOINT = "https://abr.business.gov.au/abrxmlsearch/AbrXmlSearch.asmx"
 # Perth metro postcodes (6000-6999 covers all of Perth metro + surrounds)
 PERTH_POSTCODES = set(str(p) for p in range(6000, 7000))
 
+# Residential address classification (credit: Aaron's girlfriend)
+# Businesses at home addresses are more likely to be owner-operated and need help.
+CBD_POSTCODES = {'6000', '6001', '6003', '6004', '6005'}
+COMMERCIAL_INDUSTRIAL_POSTCODES = {
+    '6017', '6021', '6053', '6054', '6055', '6065', '6090',
+    '6100', '6104', '6105', '6106', '6107', '6109', '6112',
+    '6154', '6155', '6163', '6164', '6165', '6166', '6168',
+}
+
+
+def classify_postcode(postcode):
+    """Classify a Perth postcode as residential, commercial, or cbd."""
+    if not postcode:
+        return 'unknown'
+    pc = str(postcode).strip()
+    if pc in CBD_POSTCODES:
+        return 'cbd'
+    if pc in COMMERCIAL_INDUSTRIAL_POSTCODES:
+        return 'commercial'
+    return 'residential'
+
 
 def query_abr_by_name(name_search, state='WA'):
     """Search ABR by business name to find WA businesses."""
@@ -215,6 +236,7 @@ def parse_abr_response(xml_text, target_date=None):
                 'source': 'abr',
                 'pipeline': 'no_website',
                 'category': '',  # ABR doesn't classify by trade — enrichment needed
+                'address_type': classify_postcode(postcode),
             }
 
             leads.append(lead)
