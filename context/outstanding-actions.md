@@ -22,9 +22,11 @@ Pending items that need Aaron's input or action. Claude checks this during `/pri
 | 2026-03-16 | Build 4 Canva ad templates | Aaron — when ready | See `reference/uploads/ad-creative-upgrade-guide.md` |
 | 2026-03-16 | Download Alfie's Google Docs | Aaron — low priority | Cold Calling Scripts + AI Agency Ads 2025. Links in `reference/uploads/alfie-excalidraw-summary.md` |
 | 2026-03-16 | Join BNI or District 32 networking group in Perth | Aaron | One referral partner = steady warm leads |
-| 2026-03-20 | **Set Apify budget cap to $30/mo** | Aaron | console.apify.com > Settings > Billing > Usage limit > $30. Do this before running bulk scrapes. |
+| 2026-03-20 | **Set Apify budget cap to $35/mo** | Aaron | console.apify.com > Settings > Billing > Usage limit > $35. Bumped from $30 for multi-source pipeline. |
 | 2026-03-20 | Set Google Workspace renewal to Business Starter | Aaron — before 4 Nov 2026 | admin.google.com > Billing > Change renewal settings |
-| 2026-03-22 | **Test full pipeline run via Manual Trigger** | Aaron + Claude | Run tomorrow. Verify: region picker, social scraping, email personalisation, Supabase storage. |
+| 2026-03-23 | **Test full pipeline run via Manual Trigger** | Aaron + Claude | Verify ALL 4 sources (Google Maps, HiPages, ABR, DIY websites), trade lingo, social gating, humour, call scripts, Pipeline Leads sheet, multi-source digest. |
 | 2026-03-22 | **Revoke old OpenAI API key** | Aaron | platform.openai.com > API Keys. Revoke the key starting with `sk-proj-uI8...TbA` (compromised, was hardcoded in n8n). |
 | 2026-03-22 | Monitor email warmup — target first cold sends ~2026-04-17 | Waiting | Day 3 of ~28. 3 accounts warming (myceliumai, myceliumweb, myceliumsites). |
 | 2026-03-22 | Test Apify Facebook scraping costs | After first pipeline run | Using `danek~facebook-pages-posts-ppr` ($2.99/1000 results). Need to verify cost per run stays within $30/mo budget. |
+| 2026-03-23 | ~~Connect Instantly tracking~~ | Done | Instantly webhooks need Hypergrowth plan. Deployed API polling every 6 hours instead. |
+| 2026-03-23 | ~~Add call outcome column to CRM~~ | Done | Call Outcome + Call Date columns added. Pipeline Leads tab created with 20 columns. |

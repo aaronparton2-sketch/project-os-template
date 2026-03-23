@@ -127,19 +127,58 @@ Mycelium AI
 
 ---
 
-## A/B Testing Plan
+## Template 6: "Social-Active" (for businesses posting recent job content)
 
-Track which template variant gets the highest response rate. Rotate templates across leads and log the variant in Supabase.
+Used when the business is active on Facebook, posting about completed jobs, tips, or reviews within the last 60 days. Follows the personal opener → specific proof → credibility → reason → ask structure.
+
+**Structure:**
+1. Personal opener (trade lingo, casual)
+2. "Saw your content..." (reference specific post naturally)
+3. Specific proof (detail from the post — suburb, technique, material)
+4. Credibility + relevance (why reaching out)
+5. Reason / value prop (what's in it for them)
+6. Low-friction ask
+
+**Example — Plumber who posted about a hot water system swap:**
+
+> Hey Dave,
+>
+> I came across that hot water changeover you did in Joondalup the other day. Rheem to Rinnai continuous flow, smart move, those things pay for themselves.
+>
+> The reason I'm reaching out is I build websites for plumbers, and after seeing your work I reckon you'd be a solid fit. Your reviews already sell you. A website would just make it easier for people to find you and get in touch.
+>
+> Worth a quick chat?
+>
+> Cheers,
+> Aaron
+> 0498 201 788
+
+**When NOT to use:** Business has no Facebook, hasn't posted in 60+ days, or posts are generic ads/holiday greetings/reshares. Fall back to standard templates.
+
+---
+
+## A/B Testing Plan (v2 — Smart Outreach)
+
+Track variant, trade, personalisation type, and humour flag. All logged automatically in `outreach_events` table.
 
 | Variant | Test Variable | Hypothesis |
 |---------|--------------|------------|
-| **A (current)** | Standard template — compliment + no website + offer | Baseline |
-| **B** | Competitor angle — "[X] competitors have websites, you don't" | Creates urgency via competition |
-| **C** | Review quote — lead with their actual Google review | Personal, proves you looked at their business |
-| **D** | New business — congratulations angle (ABR leads) | Warm tone, timing advantage |
-| **E** | Ultra-short — 3 sentences max | Tests if shorter = more responses |
+| **social_active** | Social-active structure (reference specific job post) | Highest reply rate — proves deep research |
+| **reviewer_namedrop** | Reference a specific reviewer by name | Personal, proves research |
+| **missing_out** | Frame around lost jobs to competitors | Creates urgency via competition |
+| **look_the_part** | Focus on looking professional online | Appeals to pride |
+| **dead_simple** | 3-4 sentences max, ultra-punchy | Tests if shorter = more responses |
+| **free_offer_upfront** | Lead with free website immediately | Tests directness |
+| **new_business** | Congratulations angle (ABR leads only) | Warm tone + timing |
 
-**How to track:** Each email sent by the pipeline logs `email_variant` in Supabase. After 2 weeks, query: `SELECT email_variant, COUNT(*) as sent, COUNT(responded_at) as responses FROM leads GROUP BY email_variant` — compare response rates.
+**Additional dimensions tracked:**
+- **Trade lingo** — which trade terms were injected (16 trades supported)
+- **Humour A/B** — ~10% of emails include light humour (tracked via `has_humour` flag)
+- **Personalisation type** — `social_active` vs `standard` vs `new_business`
+
+**How to track:** `outreach_events` table auto-logs all email + call events. 5 Supabase views: `email_variant_performance`, `trade_performance`, `humour_ab_test`, `personalisation_performance`, `weekly_outreach_summary`. Weekly digest email sent Sunday 6pm AWST.
+
+**Trade lingo reference:** See `reference/trade-lingo.md` for the full dictionary.
 
 ---
 
