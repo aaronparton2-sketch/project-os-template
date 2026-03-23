@@ -1,14 +1,14 @@
 # Current Project State
 
-**Last updated:** 2026-03-23
+**Last updated:** 2026-03-24
 
 ---
 
 ## Snapshot (30 seconds)
 
 - **Project:** Smart Automated Lead Generation Pipeline
-- **Goal:** Automated daily lead gen — scrape, enrich, score, personalise, email 100+ businesses/day across Australia via two pipelines (no website + DIY website) with auto-region rotation.
-- **Current status:** In Progress (pipeline fully built, testing phase)
+- **Goal:** Automated daily lead gen — scrape, enrich, score, personalise, email 100+ businesses/day across Australia via 5 sources (Facebook, Google Maps, HiPages, ABR, DIY websites) with auto-region rotation.
+- **Current status:** In Progress (pipeline fully built with 63 nodes, testing phase)
 
 - **What's done:**
   - Lead pipeline scripts built (ABR query, email personaliser, email templates, follow-up templates, table SQL)
@@ -17,8 +17,8 @@
   - DNS verified (MX, SPF, DKIM, DMARC) for all outreach domains
   - Google Postmaster Tools verified for all 3 domains
   - Dedicated Supabase project created for pipeline (zdaznnifkhdioczrxsae)
-  - n8n workflow fully built — 58 nodes, single consolidated workflow
-  - Pipeline A working end-to-end: Region Picker → Apify → Filter → Website Checker → Scorer → Social Enrichment → Email Personaliser → Log → Region Status
+  - n8n workflow fully built — 63 nodes, single consolidated workflow
+  - Pipeline A working end-to-end: Region Picker → Source Allocator → 5 parallel branches → Merge → Scorer → Social Enrichment → Email Personaliser → Log → Region Status
   - 3-node email personaliser architecture (Build Prompt → HTTP Request → Parse) — avoids Code node 60s timeout
   - Anti-AI-slop framework: em dash ban, no "Mycelium AI", Aussie bloke voice, reviewer name-dropping
   - Auto-region rotation: 135 Australian regions seeded (Perth metro → WA regional → regional AU → outer metro → capital cities)
@@ -34,9 +34,23 @@
     - Performance tracking: `outreach_events` table + 5 Supabase views (variant, trade, humour, personalisation, weekly)
     - Weekly performance digest: Sunday 6pm AWST email with stats + kill/boost recommendations
     - Social-active email structure: personal opener → saw your content → specific proof → credibility → reason → low-friction ask
+  - **Facebook source deployed** (2026-03-24):
+    - 5th lead source: Facebook business page scraper via Apify
+    - Strict qualification: min score 7, must have phone, no real website, posted in 90 days
+    - Source allocation: Facebook 30%, HiPages 25%, GMaps 20%, ABR 15%, DIY 10%
+    - New Merge All Sources A node chains Facebook into existing pipeline
+    - Digest updated with Facebook source labels
+  - **Offer variant A/B testing deployed** (2026-03-24):
+    - 3 offer types: free_website (80%), mates_rates (10%), portfolio_build (10%)
+    - mates_rates: "websites from $299, mates rates til end of month"
+    - portfolio_build: "free website... sounds sus I know, but building my portfolio"
+    - Deterministic selection (nameHash + dayOfYear), independent of email variant + humour
+    - offer_type tracked in outreach_events + new offer_type_performance view
+    - Weekly digest shows offer type A/B comparison
+    - Call scripts include offer-specific objection handlers
 
 - **Known remaining items:**
-  - Set Apify budget cap to $30/mo
+  - Set Apify budget cap to $45/mo (approved, up from $35)
   - Test full pipeline run end-to-end with real data
   - Wait for email warmup to complete (~4 weeks from 2026-03-20, target ~2026-04-17)
   - Test social media scraping costs (budget impact)
@@ -45,26 +59,27 @@
 
 - **Blockers / Risks:**
   - Email warmup in progress — can't cold send until ~mid-April (day 4 of ~28)
-  - Apify Facebook scraper cost per run needs testing (budget $30/mo shared with Google Maps)
+  - Apify Facebook scraper cost per run needs testing (budget $45/mo across 5 sources)
 
 ---
 
 ## Next Steps (think 1 step ahead)
 
-1. **Run full pipeline test (Manual Trigger)** — verify all 4 sources, trade lingo, social gating, humour, call scripts, Pipeline Leads sheet
-2. Set Apify budget cap to $35/mo (Aaron action — bumped from $30 for multi-source)
+1. **Run full pipeline test (Manual Trigger)** — verify all 5 sources (incl. Facebook), trade lingo, social gating, humour, offer variants, call scripts, Pipeline Leads sheet
+2. Set Apify budget cap to $45/mo (Aaron action)
 3. Monitor email warmup — target first cold sends ~2026-04-17
 4. When emails are ready: activate the Daily 6am AWST cron trigger
-5. After 2 weeks of data: review source performance, adjust allocation percentages
+5. After 2 weeks of data: review source + offer type performance, adjust allocation percentages
 
 ---
 
 ## What Claude Should Do Next
 
-- Help Aaron test the full pipeline via Manual Trigger in n8n
-- Debug any issues with the region picker, social scraper, or email personaliser
-- Monitor Apify spend and adjust scrape limits if needed
+- Help Aaron test the full pipeline via Manual Trigger in n8n (all 5 sources + offer variants)
+- Debug any issues with the Facebook scraper, region picker, social scraper, or email personaliser
+- Monitor Apify spend across 5 sources — stay under $45/mo
 - When warmup is done (~Apr 17): connect Instantly sending to the pipeline
+- After 2 weeks: compare offer type performance (free vs mates_rates vs portfolio_build)
 
 ---
 
@@ -76,6 +91,7 @@
 - **Social media plan:** `HOW-plans/2026-03-22-social-media-personalisation.md`
 - **Smart outreach plan:** `HOW-plans/2026-03-23-smart-outreach-upgrade.md`
 - **Multi-source plan:** `HOW-plans/2026-03-23-multi-source-pipeline.md`
+- **Facebook + offer variants plan:** `HOW-plans/2026-03-24-facebook-source-and-offer-variants.md`
 - **Learnings:** `learnings-register.md`
 
 ---
@@ -94,3 +110,5 @@
 - 2026-03-22 — Outreach tone refined: professional but human (not too casual). Value prop changed from "digital presence" to "book more jobs, look the part online". 5 email variants including recent_job, reviewer_namedrop, missing_out, look_the_part, dead_simple. Pipeline A fully wired: 15 nodes from trigger to region status update.
 - 2026-03-23 — Smart Outreach v2 deployed. Trade-specific lingo (16 trades), social gating (only personalise active businesses), humour A/B (~10%), call script generation, performance tracking (outreach_events table + 5 views + weekly digest).
 - 2026-03-23 — Multi-source pipeline deployed. 4 sources: Google Maps (no website 30%), HiPages (20%), ABR (20%), DIY websites (30%). Source Allocator distributes daily volume. ABR queries match region (national, not WA-only). Pipeline B now has data source. Daily digest upgraded to command centre (source splits, phone numbers, reply analytics, spreadsheet links). Pipeline Leads tab created in Google Sheet. Workflow now 58 nodes.
+- 2026-03-24 — Facebook business scraper deployed as 5th lead source. Source allocation: Facebook 30%, HiPages 25%, GMaps 20%, ABR 15%, DIY 10%. Strict qualification (min score 7). New Merge All Sources A node chains Facebook into pipeline. Workflow now 63 nodes. Supabase migration: offer_type column + facebook_page_url + offer_type_performance view.
+- 2026-03-24 — Offer variant A/B testing deployed. 3 offer types: free_website (80%), mates_rates at $299 (10%), portfolio_build (10%). Deterministic selection independent of email variant + humour. Tracked in outreach_events.offer_type. Call scripts include offer-specific objection handlers. Weekly digest shows offer type comparison. Future items captured: AI solutions outreach (blocked on Google Business), optional Twilio SMS, goal of 5 website builds/week.

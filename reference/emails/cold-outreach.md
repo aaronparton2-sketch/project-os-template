@@ -157,7 +157,73 @@ Used when the business is active on Facebook, posting about completed jobs, tips
 
 ---
 
-## A/B Testing Plan (v2 — Smart Outreach)
+## Template 7: "Mates Rates" (offer variant — 10% of outreach)
+
+Used by the lead gen pipeline for ~10% of emails. Tests whether a cheap price point converts better than "free" (which can sound suspicious).
+
+**Offer:** Websites from $299 this month only. Normally $1,500-2,000.
+
+**Subject:** quick one about [Business Name]
+
+**Body:**
+
+Hi [Name],
+
+Found your business on [Google/Facebook] and your reviews are solid. [Trade-specific detail].
+
+I build websites for [trade]s and I'm doing mates rates til end of the month. Websites from $299. Normally I charge $1,500-2,000 but I'm filling my calendar this month so doing a few at cost.
+
+If you've been putting it off, now's the time. Happy to show you what I had in mind.
+
+Cheers,
+Aaron
+0498 201 788
+
+---
+If this isn't relevant, just reply stop and I won't contact you again.
+Aaron Parton | Perth, WA
+
+**Variables:** Same as Template 4. Offer type tracked as `mates_rates` in `outreach_events.offer_type`.
+
+**Call script objection handler:** "Why so cheap?" -> "I'm building up my client base and filling my calendar. End of the month I go back to full price. Figured I'd do a few at cost while I've got the time."
+
+---
+
+## Template 8: "Portfolio Transparency" (offer variant — 10% of outreach)
+
+Used by the lead gen pipeline for ~10% of emails. Addresses the "free sounds too good to be true" objection head-on with honesty about being a new business building a portfolio.
+
+**Offer:** Free website, with transparent reasoning.
+
+**Subject:** website idea for [Business Name]
+
+**Body:**
+
+Hi [Name],
+
+Found your business on [Google/Facebook]. [Trade-specific detail].
+
+Free website... sounds suspicious I know. But I started this business in January and I'm building out my portfolio. You get a free website, I get another build to show off. Win-win.
+
+No lock-in, you keep the code. If you don't like it, no hard feelings.
+
+Worth a quick chat?
+
+Cheers,
+Aaron
+0498 201 788
+
+---
+If this isn't relevant, just reply stop and I won't contact you again.
+Aaron Parton | Perth, WA
+
+**Variables:** Same as Template 4. Offer type tracked as `portfolio_build` in `outreach_events.offer_type`.
+
+**Call script objection handler:** "What's the catch?" -> "Honestly, there isn't one. I started in Jan, I need portfolio pieces. You get a free site, I get a before-and-after for my website. If you hate it, no hard feelings."
+
+---
+
+## A/B Testing Plan (v2.1 — Smart Outreach + Offer Variants)
 
 Track variant, trade, personalisation type, and humour flag. All logged automatically in `outreach_events` table.
 
@@ -175,8 +241,10 @@ Track variant, trade, personalisation type, and humour flag. All logged automati
 - **Trade lingo** — which trade terms were injected (16 trades supported)
 - **Humour A/B** — ~10% of emails include light humour (tracked via `has_humour` flag)
 - **Personalisation type** — `social_active` vs `standard` vs `new_business`
+- **Offer type** — `free_website` (80%) vs `mates_rates` (10%) vs `portfolio_build` (10%) — tracked via `offer_type` field
+- **Lead source** — `facebook`, `google_maps`, `hipages`, `abr`, `diy_website` — 5 sources
 
-**How to track:** `outreach_events` table auto-logs all email + call events. 5 Supabase views: `email_variant_performance`, `trade_performance`, `humour_ab_test`, `personalisation_performance`, `weekly_outreach_summary`. Weekly digest email sent Sunday 6pm AWST.
+**How to track:** `outreach_events` table auto-logs all email + call events. 6 Supabase views: `email_variant_performance`, `trade_performance`, `humour_ab_test`, `personalisation_performance`, `offer_type_performance`, `weekly_outreach_summary`. Weekly digest email sent Sunday 6pm AWST.
 
 **Trade lingo reference:** See `reference/trade-lingo.md` for the full dictionary.
 
@@ -190,5 +258,5 @@ Track variant, trade, personalisation type, and humour flag. All logged automati
 - **CTA:** Always a low-commitment ask ("quick 10-min chat", "happy to show you")
 - **Never:** Attach price lists, use "we" language (you're a solo operator), or use marketing buzzwords
 - **Follow-up:** If no response in 3-4 days, send one follow-up (see `follow-up.md`). Auto follow-up is handled by the lead pipeline if enabled.
-- **Source leads from:** Automated pipeline (Google Maps, ABR, HiPages), Facebook groups, industry directories, driving around and noting businesses with no web presence
+- **Source leads from:** Automated pipeline (Google Maps, ABR, HiPages, Facebook, DIY websites), Facebook groups, industry directories, driving around and noting businesses with no web presence
 - **A/B testing:** Log which template variant was sent per lead in Supabase. Review response rates fortnightly. Kill underperformers, double down on winners.
