@@ -1,6 +1,6 @@
 # Current Project State
 
-**Last updated:** 2026-03-24
+**Last updated:** 2026-03-27
 
 ---
 
@@ -8,7 +8,7 @@
 
 - **Project:** Smart Automated Lead Generation Pipeline
 - **Goal:** Automated daily lead gen — scrape, enrich, score, personalise, email 100+ businesses/day across Australia via 5 sources (Facebook, Google Maps, HiPages, ABR, DIY websites) with auto-region rotation.
-- **Current status:** In Progress (pipeline fully built with 63 nodes, testing phase)
+- **Current status:** In Progress (pipeline fully built with 76 nodes, testing phase — SMS channel added)
 
 - **What's done:**
   - Lead pipeline scripts built (ABR query, email personaliser, email templates, follow-up templates, table SQL)
@@ -48,6 +48,25 @@
     - offer_type tracked in outreach_events + new offer_type_performance view
     - Weekly digest shows offer type A/B comparison
     - Call scripts include offer-specific objection handlers
+  - **Pattern interrupt email variant deployed** (2026-03-27):
+    - New `pattern_interrupt` variant at 15% of standard emails
+    - Two self-aware openers: "chances you read this are slim" / "I know you get 10 of these a day"
+    - Sharpened free_website offer: "let me build it, if you don't like it, it's yours anyway. All I need is to show you on a 15-min call"
+    - Sign-off fixed: dynamic state (no more hardcoded "Perth, WA")
+  - **SMS outreach channel deployed** (2026-03-27):
+    - Twilio integration: Australian number +61 468 057 217
+    - 13 new n8n nodes (8 outbound SMS + 4 inbound reply handler + sticky note). Workflow now 76 nodes.
+    - SMS Filter: Australian mobile (04xx) + score >= 7
+    - SMS Toggle: ON/OFF switch in n8n UI
+    - Build SMS Prompt: same anti-AI-slop framework as email, trade lingo, 5% rogue variant (mild cussing), max 280 chars
+    - Every SMS includes "Reply STOP to opt out" (Spam Act compliance)
+    - Send via Twilio API, log to Supabase outreach_events (channel='sms')
+    - Inbound SMS webhook handler: catches replies, classifies sentiment (positive/negative/stop), updates leads table
+    - Pipeline Leads sheet: same tab, channel column distinguishes email/sms
+    - $20 Twilio credit loaded for testing (~100-125 SMS)
+  - **Client closed via text->call flow** (2026-03-27):
+    - Aaron closed a client through SMS -> reply -> phone call -> Google Meet demo
+    - Client feedback: "I get these messages every day" — free offer + local Aussie + personal touch stood out
 
 - **Known remaining items:**
   - Set Apify budget cap to $45/mo (approved, up from $35)
@@ -58,28 +77,32 @@
   - ~~Add call outcome column to CRM Google Sheet~~ — Done: Call Outcome + Call Date columns added to CRM, dropdown values in CRM Lists
 
 - **Blockers / Risks:**
-  - Email warmup in progress — can't cold send until ~mid-April (day 4 of ~28)
+  - Email warmup in progress — can't cold send until ~mid-April (day 7 of ~28)
   - Apify Facebook scraper cost per run needs testing (budget $45/mo across 5 sources)
+  - SMS ready to test NOW — need to run pipeline, review drafts, then send test SMS
 
 ---
 
 ## Next Steps (think 1 step ahead)
 
-1. **Run full pipeline test (Manual Trigger)** — verify all 5 sources (incl. Facebook), trade lingo, social gating, humour, offer variants, call scripts, Pipeline Leads sheet
-2. Set Apify budget cap to $45/mo (Aaron action)
-3. Monitor email warmup — target first cold sends ~2026-04-17
-4. When emails are ready: activate the Daily 6am AWST cron trigger
-5. After 2 weeks of data: review source + offer type performance, adjust allocation percentages
+1. **Test SMS channel** — run pipeline via Manual Trigger, review SMS drafts, send test to Aaron's phone first
+2. **Test full pipeline** — verify all 5 sources + pattern interrupt variant + SMS branch
+3. **Review email drafts** — Aaron reads generated emails before enabling auto-send next week
+4. Set Apify budget cap to $45/mo (Aaron action)
+5. Monitor email warmup — target first cold sends ~2026-04-17
+6. When emails are ready: activate the Daily 6am AWST cron trigger
+7. After 2 weeks of data: review source + offer type + pattern interrupt performance
 
 ---
 
 ## What Claude Should Do Next
 
-- Help Aaron test the full pipeline via Manual Trigger in n8n (all 5 sources + offer variants)
-- Debug any issues with the Facebook scraper, region picker, social scraper, or email personaliser
-- Monitor Apify spend across 5 sources — stay under $45/mo
-- When warmup is done (~Apr 17): connect Instantly sending to the pipeline
-- After 2 weeks: compare offer type performance (free vs mates_rates vs portfolio_build)
+- Help Aaron test SMS outreach via Manual Trigger (review drafts first, then send test SMS)
+- Debug any issues with SMS Filter, Twilio send, or inbound reply handler
+- Help Aaron review email drafts and refine before enabling auto-send
+- Monitor Twilio credit spend (~$20 budget, ~100-125 SMS)
+- When warmup is done (~Apr 17): connect Instantly email sending
+- After 2 weeks: compare pattern_interrupt vs other variants, SMS vs email reply rates
 
 ---
 
@@ -92,6 +115,7 @@
 - **Smart outreach plan:** `HOW-plans/2026-03-23-smart-outreach-upgrade.md`
 - **Multi-source plan:** `HOW-plans/2026-03-23-multi-source-pipeline.md`
 - **Facebook + offer variants plan:** `HOW-plans/2026-03-24-facebook-source-and-offer-variants.md`
+- **Pattern interrupt + SMS plan:** `HOW-plans/2026-03-27-pattern-interrupt-emails-and-sms-outreach.md`
 - **Learnings:** `learnings-register.md`
 
 ---
@@ -112,3 +136,5 @@
 - 2026-03-23 — Multi-source pipeline deployed. 4 sources: Google Maps (no website 30%), HiPages (20%), ABR (20%), DIY websites (30%). Source Allocator distributes daily volume. ABR queries match region (national, not WA-only). Pipeline B now has data source. Daily digest upgraded to command centre (source splits, phone numbers, reply analytics, spreadsheet links). Pipeline Leads tab created in Google Sheet. Workflow now 58 nodes.
 - 2026-03-24 — Facebook business scraper deployed as 5th lead source. Source allocation: Facebook 30%, HiPages 25%, GMaps 20%, ABR 15%, DIY 10%. Strict qualification (min score 7). New Merge All Sources A node chains Facebook into pipeline. Workflow now 63 nodes. Supabase migration: offer_type column + facebook_page_url + offer_type_performance view.
 - 2026-03-24 — Offer variant A/B testing deployed. 3 offer types: free_website (80%), mates_rates at $299 (10%), portfolio_build (10%). Deterministic selection independent of email variant + humour. Tracked in outreach_events.offer_type. Call scripts include offer-specific objection handlers. Weekly digest shows offer type comparison. Future items captured: AI solutions outreach (blocked on Google Business), optional Twilio SMS, goal of 5 website builds/week.
+- 2026-03-27 — Pattern interrupt email variant deployed (15% of standard emails). Two self-aware openers. Free_website offer pitch sharpened to proven close language. Sign-off fixed from hardcoded "Perth, WA" to dynamic state.
+- 2026-03-27 — SMS outreach channel deployed via Twilio. 13 new n8n nodes (8 outbound + 4 inbound handler + sticky note). Workflow now 76 nodes. SMS Filter (mobile + score >= 7), Toggle (on/off), Build SMS Prompt (trade lingo, anti-slop, 5% rogue, STOP opt-out), Twilio send, Supabase logging. Inbound SMS webhook catches replies, classifies sentiment, updates leads. $20 credit for testing. Aaron closed a client via text->call->Meet flow — informed the design.

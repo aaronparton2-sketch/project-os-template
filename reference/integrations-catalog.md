@@ -266,6 +266,22 @@ All MCP servers are configured in `.mcp.json` and **must** use `${ENV_VAR}` refe
 
 ---
 
+### Twilio (SMS Outreach)
+
+| Field | Detail |
+|-------|--------|
+| **Purpose** | SMS cold outreach — personalised texts to high-scoring leads via automated pipeline |
+| **How used** | n8n native Twilio node for sending. Twilio webhook for inbound reply handling. |
+| **Required env vars** | `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_API_KEY_SID`, `TWILIO_API_KEY_SECRET`, `TWILIO_PHONE_NUMBER` |
+| **MCP server** | No |
+| **Cost** | ~$0.08-0.10 AUD per SMS segment. Aaron has $20 credit loaded. |
+| **Phone number** | Australian number, configured with voice forwarding + SMS webhook |
+| **Webhook** | Inbound SMS → `https://aaronparton2.app.n8n.cloud/webhook/twilio-inbound-sms` |
+| **Status** | Configured and working. Env vars in `.env`. Webhook pointing to n8n. |
+| **Setup notes** | Account SID + Auth Token from console.twilio.com. API Key created for n8n. Australian Spam Act: every SMS must include opt-out ("Reply STOP to opt out"). Twilio auto-handles STOP keyword. |
+
+---
+
 ## Adding a New Integration
 
 1. Add placeholder var name(s) to `.env.example` (in the correct section: API or MCP)
